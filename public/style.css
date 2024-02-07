@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+  
+}
+
+body{
+    background-image: linear-gradient(to right,black ,#333, red);
+}
+
+/* navigacija */
+.nav {
+    background-color: black;
+    }
+  .navigacija {
+    font-size: 18px;
+    color: whitesmoke ;
+    }
+    
+    .navigacija:hover {
+    color: rgba(255, 0, 0, 0.684);
+    }
+
+.logo {
+    width: 100px;
+    border-radius: 20px;
+}
+
+/* dugmici */
+
+.grey {
+    background-image: linear-gradient(
+        to right,
+        black,
+        red,
+        black
+    );
+    color: white;
+}
+.grey:hover {
+    background-image: linear-gradient(
+        to right,
+        red,
+        black,
+        whitesmoke
+    );
+    color: red;
+}
+
+.dark {
+    background-image: linear-gradient(
+        to right,
+        black,
+        white,
+        black
+    );
+    
+}
+.dark:hover {
+    background-image: linear-gradient(
+        to right,
+        white,
+        black,
+        white
+    );
+
+    color: white;
+}
+
+
+/* hero deo */
+.hero {
+    position: relative;
+}
+
+.centar { 
+font-family: 'Nunito', sans-serif;
+color: black;
+position: absolute;
+text-shadow: 5px -3px 4px white;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+  }
+
+/* slike */
+.coverIndex {
+    opacity: 1;
+    height: 12vh; 
+}
+
+.coverIndex:hover {
+    opacity: 0.7;
+}
