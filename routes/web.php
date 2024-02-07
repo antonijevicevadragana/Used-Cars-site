@@ -44,3 +44,12 @@ Route::get('/car/{car}/edit', [CarController::class, 'edit'])
 //izvmena postojece destinacije
 Route::put('/car/{car}', [CarController::class, 'update'])
     ->name('car.update');
+
+     // //brisanje podatka
+Route::delete('/car{car}', [CarController::class, 'destroy'])
+->name('car.destroy');
+
+
+//detaljan prikaz podatka
+Route::get('/car/{car}', [CarController::class, 'show'])
+->name('car.show'); 

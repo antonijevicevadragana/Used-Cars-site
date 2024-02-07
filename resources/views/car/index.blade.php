@@ -28,7 +28,7 @@
                             
                             <div class="row mb-2">
                                 
-                                <form method="POST" action="">
+                                <form method="POST" action="{{ route('car.destroy', $car) }}">
                                     @method('delete')
                                     @csrf
                                     <br><a href="{{ route('car.edit', $car) }}" type="button"

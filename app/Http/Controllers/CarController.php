@@ -201,6 +201,9 @@ if ($request->hasFile('cover_img') && $request->file('cover_img')->isValid()) {
      */
     public function destroy(Car $car)
     {
-        //
+        $car->delete();
+        session()->flash('alertType', 'success');
+        session()->flash('alertMsg', 'Deleted successfully!');
+        return redirect()->route('car.index');
     }
 }
