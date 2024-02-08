@@ -1,26 +1,25 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
-  
+    box-sizing: border-box;
 }
 
-body{
-    background-image: linear-gradient(to right,black ,#333, red);
+body {
+    background-image: linear-gradient(to right, black, #333, red);
 }
 
 /* navigacija */
 .nav {
     background-color: black;
-    }
-  .navigacija {
+}
+.navigacija {
     font-size: 18px;
-    color: whitesmoke ;
-    }
-    
-    .navigacija:hover {
+    color: whitesmoke;
+}
+
+.navigacija:hover {
     color: rgba(255, 0, 0, 0.684);
-    }
+}
 
 .logo {
     width: 100px;
@@ -30,85 +29,61 @@ body{
 /* dugmici */
 
 .grey {
-    background-image: linear-gradient(
-        to right,
-        black,
-        red,
-        black
-    );
+    background-image: linear-gradient(to right, black, red, black);
     color: white;
 }
 .grey:hover {
-    background-image: linear-gradient(
-        to right,
-        red,
-        black,
-        whitesmoke
-    );
+    background-image: linear-gradient(to right, red, black, whitesmoke);
     color: red;
 }
 
 .dark {
-    background-image: linear-gradient(
-        to right,
-        black,
-        white,
-        black
-    );
-    
+    background-image: linear-gradient(to right, black, white, black);
 }
 .dark:hover {
-    background-image: linear-gradient(
-        to right,
-        white,
-        black,
-        white
-    );
+    background-image: linear-gradient(to right, white, black, white);
 
     color: white;
 }
-
 
 /* hero deo */
 .hero {
     position: relative;
 }
 
-.centar { 
-font-family: 'Nunito', sans-serif;
-color: black;
-position: absolute;
-text-shadow: 5px -3px 4px white;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-  }
+.centar {
+    font-family: "Nunito", sans-serif;
+    color: black;
+    position: absolute;
+    text-shadow: 5px -3px 4px white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 /* slike */
 .coverIndex {
     opacity: 1;
-    height: 12vh; 
+    height: 12vh;
 }
 
 .coverIndex:hover {
     opacity: 0.7;
 }
 
-
 /* slider */
-  .carousel-inner {
+.carousel-inner {
     height: 70vh;
     width: 100%;
-  }
-  
-  .carousel-item {
+}
+
+.carousel-item {
     height: 70vh;
     width: 100%;
-    position: relative;  
-   
-  }
-  .carousel-item img {
-    object-fit: contain; 
+    position: relative;
+}
+.carousel-item img {
+    object-fit: contain;
     width: 100%;
     height: 100%;
     animation: pulse;
@@ -117,95 +92,45 @@ transform: translate(-50%, -50%);
     margin: 0 auto;
 }
 
+.carousel-indicators img {
+    width: 70px;
+    height: 70px;
+    display: block;
+}
+.carousel-indicators button {
+    width: max-content !important;
+}
+
 .carousel-indicators {
     position: unset;
-    
-   
-  }
-  .carousel-indicators img {
-    object-fit: contain;
-    width: 100px;
-    display: block;
-    margin-right: 2px;
-    z-index: 100;
-  }
-
-
-.carousel-indicators button {
-  width: max-content !important;
-  z-index: 1000;
 }
 
+/* RESPONSIVE */
 
-
-
-@media (max-width: 992px) {
-    .carousel-indicators {
-        position: static;
-        transform: none;
-        text-align: center; 
-    }
-    
-    .carousel-indicators img {
-        width: 40px; 
-        height: 30px; 
-    }
-}
-
-
-  .carousel-caption {
-    /* background-color: #33333382; */
-    color: white;
-    height: 80vh;
-    width: 100%; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  
-  .carousel-caption h2 {
-    font-style: italic;
-    letter-spacing: 5px;
-    font-family: Roboto;
-    font-weight: bolder;
-    font-size:clamp(4rem, 40px, 4rem);
-    text-shadow: 2px 2px #333;
-  
-  }
-  .carousel-caption p {
-    font-size: 2rem;
-    text-shadow: 2px 2px #333;
-    font-family: Roboto;
-    font-weight: bold;
-    letter-spacing: 2px;
-  }
-  
-
-  /* RESPONSIVE */
-
-  @media only screen and (max-width: 992px){
+@media only screen and (max-width: 992px) {
     .carousel {
         height: 100%;
         overflow: hidden;
-       
-      }
-      .carousel-inner {
+    }
+    .carousel-inner {
         height: 100%;
         width: 100%;
-      }
-      
-      .carousel-item {
+    }
+
+    .carousel-item {
         height: 100%;
         width: 100%;
-        position: relative;  
-       
-      }
-     
- 
- }
+        position: relative;
+    }
+
+    .carousel-indicators {
+        position: static;
+        transform: none;
+        text-align: center;
+    }
+
+    .carousel-indicators img {
+        width: 40px;
+        height: 30px;
+    }
+}
