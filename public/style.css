@@ -93,3 +93,119 @@ transform: translate(-50%, -50%);
 .coverIndex:hover {
     opacity: 0.7;
 }
+
+
+/* slider */
+  .carousel-inner {
+    height: 70vh;
+    width: 100%;
+  }
+  
+  .carousel-item {
+    height: 70vh;
+    width: 100%;
+    position: relative;  
+   
+  }
+  .carousel-item img {
+    object-fit: contain; 
+    width: 100%;
+    height: 100%;
+    animation: pulse;
+    animation-duration: 3s;
+    display: block;
+    margin: 0 auto;
+}
+
+.carousel-indicators {
+    position: unset;
+    
+   
+  }
+  .carousel-indicators img {
+    object-fit: contain;
+    width: 100px;
+    display: block;
+    margin-right: 2px;
+    z-index: 100;
+  }
+
+
+.carousel-indicators button {
+  width: max-content !important;
+  z-index: 1000;
+}
+
+
+
+
+@media (max-width: 992px) {
+    .carousel-indicators {
+        position: static;
+        transform: none;
+        text-align: center; 
+    }
+    
+    .carousel-indicators img {
+        width: 40px; 
+        height: 30px; 
+    }
+}
+
+
+  .carousel-caption {
+    /* background-color: #33333382; */
+    color: white;
+    height: 80vh;
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  .carousel-caption h2 {
+    font-style: italic;
+    letter-spacing: 5px;
+    font-family: Roboto;
+    font-weight: bolder;
+    font-size:clamp(4rem, 40px, 4rem);
+    text-shadow: 2px 2px #333;
+  
+  }
+  .carousel-caption p {
+    font-size: 2rem;
+    text-shadow: 2px 2px #333;
+    font-family: Roboto;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  
+
+  /* RESPONSIVE */
+
+  @media only screen and (max-width: 992px){
+    .carousel {
+        height: 100%;
+        overflow: hidden;
+       
+      }
+      .carousel-inner {
+        height: 100%;
+        width: 100%;
+      }
+      
+      .carousel-item {
+        height: 100%;
+        width: 100%;
+        position: relative;  
+       
+      }
+     
+ 
+ }

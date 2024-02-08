@@ -102,6 +102,10 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
+        $carId = $car->id;
+        $images=Image::where('car_id', $carId)->get();
+
+        return view('car.show', compact('car', 'images'));
     }
 
     /**

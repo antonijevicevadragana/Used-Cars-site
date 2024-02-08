@@ -8,9 +8,9 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row mb-2">
-                                <a href="" type="button" class="btn btn-sm grey"><i class="fa fa-eye"
+                                <a href="{{ route('car.show', $car) }}" type="button" class="btn btn-sm grey"><i class="fa fa-eye"
                                         aria-hidden="true"></i>
-                                    {{ __('Prikaz') }}</a>
+                                    {{ __('Show') }}</a>
                             </div>
                             <div class="row">
                                 <div class="col-6">
@@ -33,10 +33,10 @@
                                     @csrf
                                     <br><a href="{{ route('car.edit', $car) }}" type="button"
                                         class="btn btn-info btn-sm"><i class="fa-solid fa-pencil"></i>
-                                        {{ __('Izmeni') }}</a>
+                                        {{ __('Edit') }}</a>
                                     <button type="submit" class="btn btn-danger btn-sm delete-button"><i
                                             class="fa-solid fa-trash"></i>
-                                        {{ __('Izbriši') }}</button>
+                                        {{ __('Delete') }}</button>
 
                                 </form>
 
