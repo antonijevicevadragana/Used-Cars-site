@@ -53,3 +53,7 @@ Route::delete('/car{car}', [CarController::class, 'destroy'])
 //detaljan prikaz podatka
 Route::get('/car/{car}', [CarController::class, 'show'])
 ->name('car.show'); 
+
+
+Route::get('/menage', [CarController::class, 'menage'])
+->name('car.menage'); 

@@ -66,11 +66,15 @@
                             </li>
  
                     </ul>
-
+                    @if (auth()->check())
                     <a class="navbar-brand navigacija" href="{{route('car.create')}}">
-                       {{__('POSTAVI OGLAS')}}
+                       {{__('Add car Ads')}}
                     </a>
 
+                    <a class="navbar-brand navigacija" href="{{route('car.menage')}}">
+                        {{__('Menage')}}
+                     </a>
+                    @endif
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto ">
                         

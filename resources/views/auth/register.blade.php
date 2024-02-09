@@ -34,6 +34,18 @@
                 </div>
 
                 <div class="input-box">
+                    <label for="phone" class="col-form-label text-md-end">{{ __('Phone Number') }}</label>
+                    <input id="phone" type="text" class="form-control @error('email') is-invalid @enderror"
+                        name="phone" value="{{ old('phone') }}" required autocomplete="phone" placeholder="&#xf2a0; " style="font-family: Arial, FontAwesome">
+
+                    @error('phone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="input-box">
                     <label for="password" class="col-form-label text-md-end">{{ __('Password') }}</label>
 
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"

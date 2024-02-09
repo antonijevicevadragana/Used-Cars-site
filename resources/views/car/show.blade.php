@@ -123,9 +123,9 @@
             <div class="col-md-5 text-light">
                 <p class="text-center">{{__('Seller Infromation')}}</p>
                 <div class="sellerInfo d-flex justify-content-center flex-column p-4">
-                    <p><i class="fa-solid fa-user" style="color: #ffffff;"></i></p>
-                    <p><i class="fa-solid fa-envelope" style="color: #ffffff;"></i></p>
-                    <p><i class="fa-solid fa-phone-volume"  style="color: #ffffff;"></i></p>
+                    <p><i class="fa-solid fa-user" style="color: #ffffff;"></i> {{$seller->name}}</p>
+                    <p><i class="fa-solid fa-envelope" style="color: #ffffff;"></i> {{$seller->email}}</p>
+                    <p><i class="fa-solid fa-phone-volume"  style="color: #ffffff;"></i> {{$seller->phone}}</p>
                 </div>
             </div>
         </div>

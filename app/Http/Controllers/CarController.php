@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\User;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -130,10 +131,23 @@ $user=Auth::user();
      */
     public function show(Car $car)
     {
+        
         $carId = $car->id;
         $images=Image::where('car_id', $carId)->get();
 
-        return view('car.show', compact('car', 'images'));
+    //      // Retrieve all users whose id is in the user_id column of the cars table
+    // $users = User::whereIn('id', function($query) use ($carId) {
+    //     $query->select('user_id')
+    //         ->from('cars')
+    //         ->where('id', $carId);
+    // })->get();
+
+    // // Since it seems you are trying to get the seller, you may want to use first() instead of get()
+    // $seller = $users->first();
+
+    $seller = User::where('id', $car->user_id)->first();
+
+        return view('car.show', compact('car', 'images', 'seller'));
     }
 
     /**
@@ -237,5 +251,15 @@ if ($request->hasFile('cover_img') && $request->file('cover_img')->isValid()) {
         session()->flash('alertType', 'success');
         session()->flash('alertMsg', 'Deleted successfully!');
         return redirect()->route('car.index');
+    }
+
+
+    public function menage() {
+        $user=Auth::user();
+        $userId=$user->id;
+        $myCars=Car::where('user_id', $userId)->get();
+
+        return view('car.menage', compact('myCars'));
+      
     }
 }
