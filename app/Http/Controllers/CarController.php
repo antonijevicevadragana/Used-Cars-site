@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
@@ -35,7 +36,9 @@ class CarController extends Controller
     public function store(Request $request)
     {
         //validacija podataka
-
+  
+//   $userId=$request->input('user_id');
+$user=Auth::user();
         $form = $request->validate([
             'brend' => 'required|alpha',
             'model' => 'required|regex:/^[A-Za-z0-9\s\-\/]+$/', //Ovaj izraz ^[A-Za-z0-9\s\-\/]+$ će dozvoliti samo slova, brojeve, razmake, '-', i '/'
@@ -59,11 +62,36 @@ class CarController extends Controller
             'cover_img' => 'image|between:1,3072|max:3072',
             'img.*' => 'image|between:1,3072|max:3072',
         ]);
-
-        // dd($form);
+          
+      
+        $form['user_id'] = $user->id;
         //upis u tabelu cars
-        $car = Car::create($request->only('brend', 'model', 'mileage', 'engineDisplacement', 'category', 'fuel', 'transmission', 'NumberOfDoors', 'NumberOfSeats', 'airCondition', 'color', 'registration', 'demage', 'fixPrice', 'price', 'descript', 'AvgFuelConsumption', 'year', 'city', 'cover_img'));
+        // dd($form);
 
+        $car = Car::create([
+            'brend' => $form['brend'],
+            'model' => $form['model'],
+            'mileage' => $form['mileage'],
+            'engineDisplacement' => $form['engineDisplacement'],
+            'category' => $form['category'],
+            'fuel' => $form['fuel'],
+            'transmission' => $form['transmission'],
+            'NumberOfDoors' => $form['NumberOfDoors'],
+            'NumberOfSeats' => $form['NumberOfSeats'],
+            'airCondition' => $form['airCondition'],
+            'color' => $form['color'],
+            'registration' => $form['registration'],
+            'demage' => $form['demage'],
+            'fixPrice' => $form['fixPrice'],
+            'price' => $form['price'],
+            'descript' => $form['descript'],
+            'user_id' => $form['user_id'],
+            'AvgFuelConsumption' => $form['AvgFuelConsumption'],
+            'year' => $form['year'],
+            'city' => $form['city'],
+            'cover_img' => $form['cover_img']
+
+        ]);
         //cuvanje cover image
         // if ($request->hasFile('cover_img')) {
         //     $formFilds['cover_img'] = $request->file('cover_img')->store('CoverImage', 'public'); 

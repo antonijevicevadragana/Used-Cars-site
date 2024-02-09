@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Car extends Model
@@ -12,6 +13,7 @@ class Car extends Model
 
     protected $fillable = [
         'id',
+        'user_id',
         'brend',
         'model',
         'mileage',
@@ -32,10 +34,17 @@ class Car extends Model
         'price',
         'descript',
         'cover_img',
-        ];
+    ];
 
-        public function images(): HasMany
-        {
-            return $this->hasMany(Image::class, 'car_id');
-        }
+    public function images(): HasMany
+    {
+        return $this->hasMany(Image::class, 'car_id');
+    }
+
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
