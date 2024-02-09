@@ -33,21 +33,21 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //prikaz forme za unos
-Route::get('/car/create', [CarController::class, 'create'])->name('car.create');
+Route::get('/car/create', [CarController::class, 'create'])->name('car.create')->middleware('auth');
 //validacija podataka i upis novog reda u tabelu
-Route::post('/car', [CarController::class, 'store'])->name('car.store');
+Route::post('/car', [CarController::class, 'store'])->name('car.store')->middleware('auth');
 
 
 //forma za izmenu podatka
 Route::get('/car/{car}/edit', [CarController::class, 'edit'])
-    ->name('car.edit');
+    ->name('car.edit')->middleware('auth');
 //izvmena postojece destinacije
 Route::put('/car/{car}', [CarController::class, 'update'])
-    ->name('car.update');
+    ->name('car.update')->middleware('auth');
 
      // //brisanje podatka
 Route::delete('/car{car}', [CarController::class, 'destroy'])
-->name('car.destroy');
+->name('car.destroy')->middleware('auth');
 
 
 //detaljan prikaz podatka
