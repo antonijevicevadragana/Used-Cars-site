@@ -18,7 +18,7 @@ class CarController extends Controller
     {
         //
 
-        $dataCar = Car::all();
+        $dataCar = Car::latest()->paginate(4);
         return view('car.index', ['dataCar' => $dataCar]);
     }
 

@@ -31,6 +31,11 @@
                     </div>
                 </div>
             @endforeach
+            
         </div>
+        <div class="mb-2 p-4 ">
+            {{$dataCar->links()}}
+           </div>
     </div>
+   
 @endsection

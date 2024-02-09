@@ -56,4 +56,4 @@ Route::get('/car/{car}', [CarController::class, 'show'])
 
 
 Route::get('/menage', [CarController::class, 'menage'])
-->name('car.menage'); 
+->name('car.menage')->middleware('auth'); 

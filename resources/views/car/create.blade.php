@@ -213,45 +213,45 @@
                     <div class="p-2">
                         <input type="radio" class="btn-check" name="category" id="limousine" value="limousine"
                             @if (old('category') === 'limousine') checked @endif>
-                        <label class="btn btn-outline-danger" for="limousine"><img
-                                src="{{ URL::asset('img/limo.png') }}" alt="">{{ __('Limousine') }}</label>
+                        <label class="btn btn-outline-danger" for="limousine" class="categorylabel"><img
+                                src="{{ URL::asset('img/limo.png') }}" alt="" class="categoryImg">{{ __('Limousine') }}</label>
 
                         <input type="radio" class="btn-check" name="category" id="pickup" value="pickup"
                             @if (old('category') === 'pickup') checked @endif>
-                        <label class="btn btn-outline-danger" for="pickup"><img
-                                src="{{ URL::asset('img/pickup.png') }}" alt="">{{ __('Pickup') }}</label>
+                        <label class="btn btn-outline-danger" for="pickup" class="categorylabel" ><img
+                                src="{{ URL::asset('img/pickup.png') }}" alt="" class="categoryImg" >{{ __('Pickup') }}</label>
 
                         <input type="radio" class="btn-check" name="category" id="hatchback"
                             value="hatchback"@if (old('category') === 'hatchback') checked @endif>
-                        <label class="btn btn-outline-danger" for="hatchback"><img
-                                src="{{ URL::asset('img/hatchback.png') }}" alt="">{{ __('Hatchback') }}</label>
+                        <label class="btn btn-outline-danger" for="hatchback" class="categorylabel"><img
+                                src="{{ URL::asset('img/hatchback.png') }}" alt="" class="categoryImg" >{{ __('Hatchback') }}</label>
 
                         <input type="radio" class="btn-check" name="category" id="station Wagon"
                             value="station Wagon" @if (old('station Wagon') === 'station Wagon') checked @endif>
-                        <label class="btn btn-outline-danger" for="station Wagon"><img
+                        <label class="btn btn-outline-danger" for="station Wagon" class="categoryImg"class="categorylabel" ><img
                                 src="{{ URL::asset('img/stationWagon.png') }}"
                                 alt="">{{ __('Station Wagon') }}</label>
 
                         <input type="radio" class="btn-check" name="category" id="convertible/cabriolet"
                             value="convertible/cabriolet" @if (old('category') === 'convertible/cabriolet') checked @endif>
-                        <label class="btn btn-outline-danger" for="convertible/cabriolet"><img
+                        <label class="btn btn-outline-danger" for="convertible/cabriolet" class="categoryImg" class="categorylabel"><img
                                 src="{{ URL::asset('img/kabrio.png') }}"
-                                alt="">{{ __('Convertible/cabriolet') }}</label>
+                                alt="">{{ __('Cabriolet') }}</label>
 
                         <input type="radio" class="btn-check" name="category" id="coupe" value="coupe"
                             @if (old('category') === 'coupe') checked @endif>
-                        <label class="btn btn-outline-danger" for="coupe"><img
-                                src="{{ URL::asset('img/coupe.png') }}" alt="">{{ __('Coupe') }}</label>
+                        <label class="btn btn-outline-danger" for="coupe" class="categorylabel"><img
+                                src="{{ URL::asset('img/coupe.png') }}" alt="" class="categoryImg">{{ __('Coupe') }}</label>
 
                         <input type="radio" class="btn-check" name="category" id="minivan" value="minivan"
                             @if (old('category') === 'minivan') checked @endif>
-                        <label class="btn btn-outline-danger" for="minivan"><img
-                                src="{{ URL::asset('img/minivan.png') }}" alt="">{{ __('Minivan') }}</label>
+                        <label class="btn btn-outline-danger" for="minivan" class="categorylabel"><img
+                                src="{{ URL::asset('img/minivan.png') }}" alt="" class="categoryImg">{{ __('Minivan') }}</label>
 
                         <input type="radio" class="btn-check" name="category" id="jeep" value="jeep"
                             @if (old('category') === 'jeep') checked @endif>
-                        <label class="btn btn-outline-danger" for="jeep"><img src="{{ URL::asset('img/jeep.png') }}"
-                                alt="">{{ __('Jeep') }}</label>
+                        <label class="btn btn-outline-danger" for="jeep" class="categorylabel"><img src="{{ URL::asset('img/jeep.png') }}"
+                                alt="" class="categoryImg" >{{ __('Jeep') }}</label>
                     </div>
                 </div>
             </div>
