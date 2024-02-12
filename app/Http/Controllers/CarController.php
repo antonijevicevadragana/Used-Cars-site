@@ -14,12 +14,56 @@ class CarController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
 
         $dataCar = Car::latest()->paginate(4);
-        return view('car.index', ['dataCar' => $dataCar]);
+
+
+        $brendCars = Car::select('brend')->distinct()->get(); //da se ne ponavljaju brendovi auta
+        $modelsByBrand = [];
+        foreach ($brendCars as $car) {
+            $modelsByBrand[$car->brend] = Car::where('brend', $car->brend)->pluck('model');
+        }
+
+        $categoryCars=Car::select('category')->distinct()->get();
+
+        if ($request->isMethod('GET')) {
+            $model = $request->input('model');
+            $brand = $request->input('brand');
+            $fuel = $request->input('fuel');
+            $yearFrom = $request->input('yearFrom');
+            $yearTo = $request->input('yearTo');
+            $price = $request->input('price');
+            $category= $request->input('category');
+        
+            $dataCar = Car::when($request->model, function ($query) use ($request) {
+                $query->where('model', $request->model);
+            })
+            ->when($request->brand, function ($query) use ($request) {
+                $query->where('brend', $request->brand);
+            })
+            ->when($request->fuel, function ($query) use ($request) {
+                $query->where('fuel', $request->fuel);
+            })
+            ->when($request->yearFrom, function ($query) use ($request) {
+                $query->where('year', '>=', $request->yearFrom);
+            })
+            ->when($request->yearTo, function ($query) use ($request) {
+                $query->where('year', '<=', $request->yearTo);
+            })
+            ->when($request->price, function ($query) use ($request) {
+                $query->where('price', '<=', $request->price);
+            })
+            ->when($request->category, function ($query) use ($request) {
+                $query->where('category', $request->category);
+            })
+            ->latest()
+            ->paginate(4);
+        }
+
+        return view('car.index', ['dataCar' => $dataCar, 'brendCars' => $brendCars, 'modelsByBrand' => $modelsByBrand, 'categoryCars'=> $categoryCars]);
     }
 
     /**
@@ -37,9 +81,9 @@ class CarController extends Controller
     public function store(Request $request)
     {
         //validacija podataka
-  
-//   $userId=$request->input('user_id');
-$user=Auth::user();
+
+        //   $userId=$request->input('user_id');
+        $user = Auth::user();
         $form = $request->validate([
             'brend' => 'required|alpha',
             'model' => 'required|regex:/^[A-Za-z0-9\s\-\/]+$/', //Ovaj izraz ^[A-Za-z0-9\s\-\/]+$ će dozvoliti samo slova, brojeve, razmake, '-', i '/'
@@ -63,8 +107,8 @@ $user=Auth::user();
             'cover_img' => 'image|between:1,3072|max:3072',
             'img.*' => 'image|between:1,3072|max:3072',
         ]);
-          
-      
+
+
         $form['user_id'] = $user->id;
         //upis u tabelu cars
         // dd($form);
@@ -131,21 +175,21 @@ $user=Auth::user();
      */
     public function show(Car $car)
     {
-        
+
         $carId = $car->id;
-        $images=Image::where('car_id', $carId)->get();
+        $images = Image::where('car_id', $carId)->get();
 
-    //      // Retrieve all users whose id is in the user_id column of the cars table
-    // $users = User::whereIn('id', function($query) use ($carId) {
-    //     $query->select('user_id')
-    //         ->from('cars')
-    //         ->where('id', $carId);
-    // })->get();
+        //      // Retrieve all users whose id is in the user_id column of the cars table
+        // $users = User::whereIn('id', function($query) use ($carId) {
+        //     $query->select('user_id')
+        //         ->from('cars')
+        //         ->where('id', $carId);
+        // })->get();
 
-    // // Since it seems you are trying to get the seller, you may want to use first() instead of get()
-    // $seller = $users->first();
+        // // Since it seems you are trying to get the seller, you may want to use first() instead of get()
+        // $seller = $users->first();
 
-    $seller = User::where('id', $car->user_id)->first();
+        $seller = User::where('id', $car->user_id)->first();
 
         return view('car.show', compact('car', 'images', 'seller'));
     }
@@ -193,11 +237,11 @@ $user=Auth::user();
             'cover_img' => 'image|between:1,3072|max:3072',
             'img.*' => 'image|between:1,3072|max:3072',
         ]);
-// dd($form);
-       
-$car->update($request->only('brend', 'model', 'mileage', 'engineDisplacement', 'category', 'fuel', 'transmission', 'NumberOfDoors', 'NumberOfSeats', 'airCondition', 'color', 'registration', 'demage', 'fixPrice', 'price', 'descript', 'AvgFuelConsumption', 'year', 'city', 'cover_img'));
-        
-if ($request->hasFile('cover_img') && $request->file('cover_img')->isValid()) {
+        // dd($form);
+
+        $car->update($request->only('brend', 'model', 'mileage', 'engineDisplacement', 'category', 'fuel', 'transmission', 'NumberOfDoors', 'NumberOfSeats', 'airCondition', 'color', 'registration', 'demage', 'fixPrice', 'price', 'descript', 'AvgFuelConsumption', 'year', 'city', 'cover_img'));
+
+        if ($request->hasFile('cover_img') && $request->file('cover_img')->isValid()) {
             //generisemo naziv slike id filma i ekstenzija fajla
             $imgName = $car->id . '.' . $request->file('cover_img')->extension();
             //smestamo fajl u folder public/film_images
@@ -208,7 +252,7 @@ if ($request->hasFile('cover_img') && $request->file('cover_img')->isValid()) {
             $car->cover_img = 'CoverImage/' . $imgName;
             $car->save();
 
-          
+
 
             if ($request->has('keep_old_images')) {
                 // Ako je korisnik označio opciju "Zadrži stare slike", nema potrebe za brisanjem starih slika.
@@ -254,12 +298,12 @@ if ($request->hasFile('cover_img') && $request->file('cover_img')->isValid()) {
     }
 
 
-    public function menage() {
-        $user=Auth::user();
-        $userId=$user->id;
-        $myCars=Car::where('user_id', $userId)->get();
+    public function menage()
+    {
+        $user = Auth::user();
+        $userId = $user->id;
+        $myCars = Car::where('user_id', $userId)->get();
 
         return view('car.menage', compact('myCars'));
-      
     }
 }
