@@ -1,4 +1,4 @@
-
+<img src=./imageReadMe/cars.png width='150%'>
 Classified ads application for used cars with search functionality across multiplecategories.
 (HTML5, CSS, Bootstrap 5, PHP, SQL, Laravel).
 
