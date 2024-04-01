@@ -47,25 +47,25 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav ">
+                    {{-- <ul class="navbar-nav ">
 
                         <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#"
                                     role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                     v-pre>
-                                    {{ __(' vozila')}}
+                                    {{ __('Cars')}}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('neko vozilo') }}
+                                        {{ __('') }}
                                     </a>      
                                 </div>
                             </li>
  
-                    </ul>
+                    </ul> --}}
                     @if (auth()->check())
                     <a class="navbar-brand navigacija" href="{{route('car.create')}}">
                        {{__('Add car Ads')}}
